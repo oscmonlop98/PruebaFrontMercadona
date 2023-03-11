@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-home',
