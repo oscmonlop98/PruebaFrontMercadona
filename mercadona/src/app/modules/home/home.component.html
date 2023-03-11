@@ -1,0 +1,25 @@
+<app-toolbar [loggedIn]="loggedIn"></app-toolbar>
+<h1>Bienvenido</h1>
+<div class="content">
+    <mat-card class="info" *ngIf="!loggedIn">
+        <mat-card-header>
+          <mat-card-title>Tornillos</mat-card-title>
+          <mat-card-subtitle>100 por revisar</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="d-flex justify-content-end">
+                <button (click)="reviewTornillos()" mat-button><mat-icon>remove_red_eye</mat-icon>Revisar</button>    
+            </div> 
+        </mat-card-content>
+    </mat-card>
+    <div class="spinner-container" *ngIf="spinner">
+        <mat-spinner class="mat-spinner-color"></mat-spinner>
+        <span>Cargando...</span>
+    </div>
+</div>
+<div>
+    <app-table [loggedIn]="loggedIn"></app-table>
+</div>
+<app-footer [loggedIn]="loggedIn"></app-footer>
+
+  
