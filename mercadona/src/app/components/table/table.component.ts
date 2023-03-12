@@ -20,7 +20,12 @@ export class TableComponent implements AfterViewInit {
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() loggedIn: boolean = false;
+  @Input() addTornillo: any = {};
+  @Input() deleteTornillo: boolean = false;
+  @Input() changeOrderColumns: string[] = [];
   @Output() tableAction = new EventEmitter<object>();
+
+  removeTornilloId: string = '';
 
 
   ngAfterViewInit() {
@@ -34,12 +39,28 @@ export class TableComponent implements AfterViewInit {
       const settings = document.getElementsByClassName('settings-section').item(0) as HTMLElement;
       settings.style.display = 'flex';
       table.style.display = 'block';
-      
+    }
+    if(this.addTornillo.name && this.paginator) {
+      this.addTornillo['id'] = this.dataSource['_data']._value.length + 1;
+      this.dataSource['_data'].value.push(this.addTornillo);
+      this.paginator.length = this.dataSource['_data'].value.length;
+      this.dataSource.paginator = this.paginator;
+    }
+    if(this.deleteTornillo) {
+      this.dataSource['_data'].value.splice(this.removeTornilloId,1);
+      this.paginator.length = this.dataSource['_data'].value.length;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource._updateChangeSubscription();
+    }
+    if(this.changeOrderColumns.length > 0) {
+      this.changeOrderColumns.push('action');
+      this.displayedColumns = this.changeOrderColumns;
     }
   }
   
   delete(element: any) {
     console.log(element);
+    this.removeTornilloId = element.id;
     const data = {
       event: "delete",
       data: element.id
@@ -48,9 +69,10 @@ export class TableComponent implements AfterViewInit {
   }
 
   orderColumn() {
+    
     const data = {
       event: "order",
-      data: ""
+      data: this.displayedColumns.slice(0, 4)
     }
     this.tableAction.emit(data);
   }

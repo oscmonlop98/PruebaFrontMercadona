@@ -11,6 +11,9 @@ export class HomeComponent {
 
   loggedIn: boolean = false;
   spinner: boolean = false;
+  newTornillo: object = {};
+  removeTornillo: boolean = false;
+  newOrderColumns: string[] = [];
 
   constructor(public dialog: MatDialog) {
     
@@ -41,6 +44,8 @@ export class HomeComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.newTornillo = result;
+      console.log(result);
       console.log('The dialog was closed');
     });
   }
@@ -53,31 +58,38 @@ export class HomeComponent {
     if (data.event === 'delete') {
       this.deleteTornillo(data.data);
     } else if (data.event === 'order') {
-      this.orderColumns();
+      this.orderColumns(data);
     }
   }
+
   deleteTornillo(idTornillo: string) {
     console.log("event", idTornillo);
     const dialogRef = this.dialog.open(DialogBoxComponent, {
-      width: '40em',
-      height: '15em',
+      maxWidth: '50em',
+      maxHeight: '20em',
       data: {event: "delete"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.removeTornillo = result;
+      }
       console.log('The dialog was closed');
     });
   }
 
-  orderColumns() {
+  orderColumns(data: any) {
     
     const dialogRef = this.dialog.open(DialogBoxComponent, {
-      width: '70em',
-      height: '40em',
-      data: {event: "order"}
+      width: '75em',
+      height: '50em',
+      data: {event: "order", data: data}
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.newOrderColumns = result;
+      }
       console.log('The dialog was closed');
     });
   }

@@ -47,16 +47,22 @@
 
 <div class="modal-delete" *ngIf="modalDelete">
     <p mat-dialog-title>Confirmación</p>
-    <p>¿Desea eliminar el elemento seleccionado?</p>
-    <div>
-        <button class="modal-buttons button-cancel" mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
+    <h3>¿Desea eliminar el elemento seleccionado?</h3>
+    <div class="remove-buttons">
+        <div>
+            <button class="modal-buttons button-cancel" mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
+        </div>
+        <div class="button-delete">
+            <button class="modal-buttons button-continue" mat-button (click)="deleteTornillo()">Eliminar</button>
+        </div>
     </div>
-    <div>
-        <button class="modal-buttons button-continue" mat-button (click)="saveTornillo()">Guardar</button>
-    </div>
+    
 </div>
 
 <div class="modal-order" *ngIf="modalOrder">
+    <div class="row-close">
+        <button class="close-button" mat-button (click)="close()">X</button>
+    </div>
     <div class="order-container" mat-dialog-content>
         <div class="example-container">
             <h4>Rellenar, fijar u ocultar las columnas de la tabla</h4>
@@ -64,11 +70,20 @@
         
             <div
               cdkDropList
-              [cdkDropListData]="todo"
+              [cdkDropListData]="orderColumns"
               class="example-list"
               (cdkDropListDropped)="drop($event)">
-              <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+              <div class="example-box" *ngFor="let item of orderColumns" cdkDrag>{{item}}</div>
             </div>
-          </div>
+        </div>
+        <div class="order-buttons">
+            <div>
+                <button class="modal-buttons button-cancel" mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
+            </div>
+            <div>
+                <button class="modal-buttons button-continue" mat-button (click)="changeOrder()">Aplicar</button>
+            </div>
+        </div>
+        
     </div>
 </div>

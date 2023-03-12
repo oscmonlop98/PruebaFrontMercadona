@@ -112,6 +112,24 @@ label {
     cursor: pointer;
 }
 
+.modal-delete {
+    background-color: white;
+    height: 100%;
+    padding: 15px;
+    width: 42em;
+}
+
+.remove-buttons {
+    display: flex;
+    justify-content: end;
+}
+.remove-buttons button {
+    height: 40px;
+    width: 100px;
+}
+.button-delete button {
+    background-color: #962929;
+}
 .button-cancel {
     background-color: gray;
 }
@@ -120,6 +138,24 @@ label {
     background-color: green;
 }
 
+.order-buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10em;
+}
+
+.row-close {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.4em;
+    padding: 12px;
+}
+
+.close-button {
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
 // Drag and drop
 .example-list {
     width: 500px;

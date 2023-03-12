@@ -2,11 +2,11 @@ import { Tornillo } from "../models/tornillo.model";
 
 export const TornilloList: Tornillo[] = [
     {
-        id: "prueba",
-        name: "nmbre",
+        id: "0",
+        name: "s",
         price: 2,
         format: "pdf",
-        brand: "mercadona"
+        brand: "d"
     },
     {
         id: "prueba",

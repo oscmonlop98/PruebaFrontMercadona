@@ -26,6 +26,7 @@ export class DialogBoxComponent {
   "AcctImport"
   ];
 
+  orderColumns: string[] = [];
 
   private readonly formatFormConfig = {
     name: this.name,
@@ -46,13 +47,11 @@ export class DialogBoxComponent {
       this.modalDelete = true;
     } else if (this.data.event === "order") {
       this.modalOrder = true;
+      this.orderColumns = this.data.data.data;
+      console.log(this.orderColumns);
     }
     
   }
-
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -84,15 +83,27 @@ export class DialogBoxComponent {
     if(!this.addTornillosForm.valid) {
       alert("Formulario no válido, por favor rellene todos los campos.");
     } else {
-      alert("Tornillo añadido")
-      this.dialogRef.close();
+      alert("Tornillo añadido");
+      const tornillo = {
+        name: this.name.value,
+        price: this.price.value,
+        format: this.format.value,
+        brand: this.brand.value
+      }
+      this.dialogRef.close(tornillo);
     }
-    console.log(this.addTornillosForm.valid);
-    console.log(this.name.value);
-    console.log(this.price.value);
-    console.log(this.format.value);
-    console.log(this.brand.value);
-
   }
 
+  deleteTornillo() {
+    this.dialogRef.close(true);
+  }
+
+  changeOrder() {
+    this.dialogRef.close(this.orderColumns);
+    console.log(this.orderColumns);
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
 }

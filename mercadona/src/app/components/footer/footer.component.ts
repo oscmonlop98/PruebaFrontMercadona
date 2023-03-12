@@ -17,7 +17,6 @@ export class FooterComponent {
   @Output() myData = new EventEmitter<string>();
 
   openModal() {
-    console.log("casdf");
     this.myData.emit('open');
   }
 }
