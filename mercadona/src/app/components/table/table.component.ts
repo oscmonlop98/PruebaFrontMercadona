@@ -40,26 +40,36 @@ export class TableComponent implements AfterViewInit {
       settings.style.display = 'flex';
       table.style.display = 'block';
     }
-    if(this.addTornillo.name && this.paginator) {
-      this.addTornillo['id'] = this.dataSource['_data']._value.length + 1;
+    
+    if(this.addTornillo.name != undefined && this.paginator) {
+      this.addTornillo['id'] = this.dataSource['_data']._value.length;
       this.dataSource['_data'].value.push(this.addTornillo);
       this.paginator.length = this.dataSource['_data'].value.length;
       this.dataSource.paginator = this.paginator;
+      this.addTornillo = {};
     }
     if(this.deleteTornillo) {
-      this.dataSource['_data'].value.splice(this.removeTornilloId,1);
+      this.dataSource['_data'].value.forEach((element: any, index: number, object: string[]) => {
+        if(element.id === this.removeTornilloId) {
+          object.splice(index,1);
+        }
+      });
       this.paginator.length = this.dataSource['_data'].value.length;
       this.dataSource.paginator = this.paginator;
       this.dataSource._updateChangeSubscription();
+      const data = {
+        event: "deleted",
+        data: ""
+      };
+      this.tableAction.emit(data);
     }
     if(this.changeOrderColumns.length > 0) {
-      this.changeOrderColumns.push('action');
+      this.changeOrderColumns[4] = 'action';
       this.displayedColumns = this.changeOrderColumns;
     }
   }
   
   delete(element: any) {
-    console.log(element);
     this.removeTornilloId = element.id;
     const data = {
       event: "delete",
@@ -69,7 +79,6 @@ export class TableComponent implements AfterViewInit {
   }
 
   orderColumn() {
-    
     const data = {
       event: "order",
       data: this.displayedColumns.slice(0, 4)

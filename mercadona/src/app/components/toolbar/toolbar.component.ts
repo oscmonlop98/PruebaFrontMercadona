@@ -16,8 +16,4 @@ export class ToolbarComponent {
 
   @Input() loggedIn: boolean = false;
 
-  ngOnChanges() {
-    console.log(this.loggedIn);
-  }
-
 }

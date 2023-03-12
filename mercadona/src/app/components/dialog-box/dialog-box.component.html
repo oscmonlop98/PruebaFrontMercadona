@@ -1,6 +1,6 @@
 <div class="modal-add" *ngIf="modalAdd">
-    <h1 class="title" mat-dialog-title>Nuevo producto</h1>
-    <div class="content" mat-dialog-content>
+    <h1 mat-dialog-title>Nuevo producto</h1>
+    <div class="contenido" mat-dialog-content>
         <section class="flex-container">
             <form [formGroup]="addTornillosForm">
                 <div class="title-container">
@@ -12,7 +12,7 @@
                 <div class="title-container">
                     <label>Precio</label>
                     <span class="example-spacer"></span>
-                    <label>Formato</label>
+                    <label class="lbl-format">Formato</label>
                 </div>
                 <div class="mid-row">
                     <div class="stepper">
@@ -23,7 +23,7 @@
                         <button mat-button class="plus" (click)="handlePlus()">+</button>
                     </div>
                     <select [formControl]="format">
-                        <option *ngFor="let format of states" [value]="format">{{format}}</option>
+                        <option *ngFor="let format of formats" [value]="format">{{format}}</option>
                     </select>
                 </div>
                 <div class="title-container">
@@ -36,7 +36,7 @@
                 
             </form>
             <div>
-                <button class="modal-buttons button-cancel" mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
+                <button class="modal-buttons button-cancel" mat-button mat-dialog-close (click)="close()">Cancelar</button>
             </div>
             <div>
                 <button class="modal-buttons button-continue" mat-button (click)="saveTornillo()">Guardar</button>
@@ -50,7 +50,7 @@
     <h3>¿Desea eliminar el elemento seleccionado?</h3>
     <div class="remove-buttons">
         <div>
-            <button class="modal-buttons button-cancel" mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
+            <button class="modal-buttons button-cancel" mat-button mat-dialog-close (click)="close()">Cancelar</button>
         </div>
         <div class="button-delete">
             <button class="modal-buttons button-continue" mat-button (click)="deleteTornillo()">Eliminar</button>
@@ -78,7 +78,7 @@
         </div>
         <div class="order-buttons">
             <div>
-                <button class="modal-buttons button-cancel" mat-button mat-dialog-close (click)="onNoClick()">Cancelar</button>
+                <button class="modal-buttons button-cancel" mat-button mat-dialog-close (click)="close()">Cancelar</button>
             </div>
             <div>
                 <button class="modal-buttons button-continue" mat-button (click)="changeOrder()">Aplicar</button>

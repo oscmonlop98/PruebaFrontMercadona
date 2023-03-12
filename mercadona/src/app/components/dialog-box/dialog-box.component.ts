@@ -20,7 +20,7 @@ export class DialogBoxComponent {
   selectedValue: string = '';
   value: number = 0;
   addTornillosForm: FormGroup;
-  states: string[] = [
+  formats: string[] = [
   "Account",
   "Accruals",
   "AcctImport"
@@ -48,7 +48,6 @@ export class DialogBoxComponent {
     } else if (this.data.event === "order") {
       this.modalOrder = true;
       this.orderColumns = this.data.data.data;
-      console.log(this.orderColumns);
     }
     
   }
@@ -75,10 +74,7 @@ export class DialogBoxComponent {
     this.value = Number ((this.value + 0.1).toFixed(1));
     this.price.setValue(this.value);
   }
-  onNoClick() {
-    this.dialogRef.close();
-    
-  }
+
   saveTornillo() {
     if(!this.addTornillosForm.valid) {
       alert("Formulario no válido, por favor rellene todos los campos.");
@@ -99,11 +95,10 @@ export class DialogBoxComponent {
   }
 
   changeOrder() {
-    this.dialogRef.close(this.orderColumns);
-    console.log(this.orderColumns);
+    this.dialogRef.close(this.orderColumns);    
   }
 
   close() {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 }

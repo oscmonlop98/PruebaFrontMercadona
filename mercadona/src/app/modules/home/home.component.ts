@@ -11,7 +11,7 @@ export class HomeComponent {
 
   loggedIn: boolean = false;
   spinner: boolean = false;
-  newTornillo: object = {};
+  newTornillo: any = {};
   removeTornillo: boolean = false;
   newOrderColumns: string[] = [];
 
@@ -30,7 +30,7 @@ export class HomeComponent {
       } else {
         this.loggedIn = false;
       }
-    }, 0);
+    }, 2000);
     
     
   }
@@ -40,30 +40,36 @@ export class HomeComponent {
     const dialogRef = this.dialog.open(DialogBoxComponent, {
       width: '80em',
       height: '45em',
-      data: {event: "add"}
+      data: {event: "add"},
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.newTornillo = result;
-      console.log(result);
+      if(result) {
+        this.newTornillo = result;  
+      } else {
+        this.newTornillo = result;
+      }
+      
       console.log('The dialog was closed');
     });
   }
 
-  addTornillo() {
-
-  }
-
   recieveData(data: any) {
     if (data.event === 'delete') {
-      this.deleteTornillo(data.data);
+      this.deleteTornillo();
     } else if (data.event === 'order') {
       this.orderColumns(data);
+    } else if (data.event === 'deleted') {
+      setTimeout(() => {
+        this.removeTornillo = false;  
+      }, 1000);
+      
     }
   }
 
-  deleteTornillo(idTornillo: string) {
-    console.log("event", idTornillo);
+  deleteTornillo() {
+    
     const dialogRef = this.dialog.open(DialogBoxComponent, {
       maxWidth: '50em',
       maxHeight: '20em',
@@ -71,6 +77,7 @@ export class HomeComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      
       if(result) {
         this.removeTornillo = result;
       }

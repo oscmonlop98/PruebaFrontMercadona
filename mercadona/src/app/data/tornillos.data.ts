@@ -9,77 +9,77 @@ export const TornilloList: Tornillo[] = [
         brand: "d"
     },
     {
-        id: "prueba",
+        id: "1",
         name: "nmbre",
         price: 2,
         format: "pdf",
         brand: "mercadona"
     },
     {
-        id: "prueba",
+        id: "2",
         name: "nmbre",
         price: 2,
         format: "pdf",
         brand: "mercadona"
     },
     {
-        id: "prueba",
+        id: "3",
         name: "nmbre",
         price: 2,
         format: "pdf",
         brand: "mercadona"
     },
     {
-        id: "prueba",
+        id: "4",
         name: "nmbre",
         price: 2,
         format: "pdf",
         brand: "mercadona"
     },
     {
-        id: "prueba",
+        id: "5",
         name: "nmbre",
         price: 2,
         format: "pdf",
         brand: "mercadona"
     },
     {
-        id: "prueba",
+        id: "6",
         name: "nmbre",
         price: 2,
         format: "pdf",
         brand: "mercadona"
     },
     {
-        id: "prueba",
+        id: "7",
         name: "nmbre",
         price: 2,
         format: "pdf",
         brand: "mercadona"
     },
     {
-        id: "prueba",
+        id: "8",
         name: "nmbre",
         price: 2,
         format: "pdf",
         brand: "mercadona"
     },
     {
-        id: "prueba",
+        id: "9",
         name: "nmbre",
         price: 2,
         format: "pdf",
         brand: "mercadona"
     },
     {
-        id: "prueba",
+        id: "10",
         name: "nmbre",
         price: 2,
         format: "pdf",
         brand: "mercadona"
     },
     {
-        id: "prueba",
+        id: "11",
         name: "nmbre",
         price: 2,
         format: "pdf",
