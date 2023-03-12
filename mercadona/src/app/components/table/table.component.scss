@@ -1,3 +1,46 @@
 .table-tornillos {
     display: none;
+    max-width: 140em;
+    max-height: 700px;
+    overflow-y: auto;
+    
+    margin-left: 10%;
+    
+    th {
+        background-color: lightgrey;
+        color: black;
+        border-right: 1px solid gray;
+    }
+    td {
+        color: black;
+        background-color: white;
+        border-bottom: 1px solid gray;
+    }
+
+}
+
+.paginator {
+    color: black;
+    background-color: gray;
+    position: sticky;   
+    bottom: 0px;
+    z-index: 10;
+}
+
+.settings-section {
+    width: 140em;
+    display: none;
+    margin-bottom: 5px;
+    margin-top: 6%;
+    margin-left: 10%;
+}
+
+.example-spacer{
+    flex: 1 1 auto;
+}
+
+button {
+    border: none;
+    background-color: white;
+    cursor: pointer;
 }

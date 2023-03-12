@@ -9,6 +9,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TableComponent } from 'src/app/components/table/table.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -26,7 +31,12 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
     MatButtonModule,
     MatProgressSpinnerModule,
     TableComponent,
-    FooterComponent
+    FooterComponent,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    DragDropModule
   ]
 })
 export class HomeModule { }

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,5 +14,10 @@ import { CommonModule } from '@angular/common';
 export class FooterComponent {
 
   @Input() loggedIn: boolean = false;
+  @Output() myData = new EventEmitter<string>();
 
+  openModal() {
+    console.log("casdf");
+    this.myData.emit('open');
+  }
 }

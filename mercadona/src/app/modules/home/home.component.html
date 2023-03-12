@@ -18,8 +18,8 @@
     </div>
 </div>
 <div>
-    <app-table [loggedIn]="loggedIn"></app-table>
+    <app-table [loggedIn]="loggedIn" (tableAction)="recieveData($event)"></app-table>
 </div>
-<app-footer [loggedIn]="loggedIn"></app-footer>
+<app-footer (myData)="clickAddTornillo()" [loggedIn]="loggedIn"></app-footer>
 
   
